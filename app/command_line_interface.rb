@@ -5,7 +5,7 @@ Dir.glob(File.expand_path('commands/*.rb', __dir__)).each { require _1 }
 class CommandLineInterface
   COMMANDS = [Help, Init, Exit].freeze
 
-  HINT = 'Type `help` for instructions on usage'
+  HINT = 'Type `help` for instructions on usage.'
   UNRECOGNISED_MESSAGE = "Command not found. #{HINT}".freeze
 
   def initialize(warehouse = Warehouse.new, stdin = $stdin, stdout = $stdout)
