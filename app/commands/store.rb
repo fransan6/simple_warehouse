@@ -4,7 +4,7 @@ require 'crate'
 class Store < Command
   COMMAND = 'store'
   ARGS = 'X Y W H P'
-  HELP = 'Stores a crate of product code P and of size W x H at position (X,Y). The crate will occupy W x H locations on the grid.'
+  HELP = 'Stores a crate of product code P and of size W x H at position (X,Y). The crate will occupy W x H locations on the warehouse grid.'
 
   def execute(args)
     position_x, position_y, width, height = args.map(&:to_i)

@@ -5,6 +5,7 @@ Dir.glob(File.expand_path('commands/*.rb', __dir__)).each { require _1 }
 class CommandLineInterface
   COMMANDS = [Help, Init, Exit, View, Store].freeze
 
+  WELCOME = "Welcome to simple_warehouse!"
   HINT = 'Type `help` for instructions on usage.'
   UNRECOGNISED_MESSAGE = "Command not found. #{HINT}".freeze
 
@@ -16,9 +17,10 @@ class CommandLineInterface
   end
 
   def run
-    stdout.puts HINT
+    stdout.puts WELCOME + ' ' + HINT
     loop do
       command, *args = read_command_line
+      command.downcase!
       stdout.puts command_result(command, args)
 
       break if command == 'exit'

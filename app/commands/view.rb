@@ -3,7 +3,7 @@ require 'commands/command'
 class View < Command
   COMMAND = 'view'
   ARGS = ''
-  HELP = 'Outputs a visual representation of the current state of the grid.'
+  HELP = 'Outputs a visual representation of the current state of the warehouse grid.'
 
   def execute(_args)
     if warehouse.width.nil?
