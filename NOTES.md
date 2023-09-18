@@ -2,21 +2,21 @@ This was a really fun and interesting challenge to do - I learnt a lot. I added 
 
 I spent plenty of the time in the beginning going through the code, researching anything I didn't know and using pry, when necessary, to see exactly what a value was.
 
-In the vein of OOP, it made sense to create a Crate class and follow the skeleton in creating the other commands.Given that the warehouse is managing a crate's placement and its existence, it makes sense to keep logic in there for validating if a crate can fit or (going forward) locating or removing a crate. I followed the user stories as set out in the README and continued with RSpec.
+In the vein of OOP, it made sense to create a Crate class and follow the skeleton in creating the other commands. Given that the warehouse is managing a crate's placement and its existence, it makes sense to keep logic in there for validating if a crate can fit or (going forward) locating or removing a crate. I followed the user stories as set out in the README and continued with RSpec.
 
 I started with how to initialise a user-created warehouse, the init command, and moved onto viewing a warehouse. I tested throughout and it was excellent in catching any issues. After that, it was creating Crate and storing a crate in said warehouse. There are lots of (edge) cases to consider with something like this.
 
 Other than the time spent on figuring out what the code was doing and getting to grips with RSpec, the store command's and the subsequent logic in the warehouse proved more timely than anticipated, making sure I tried to accommodate for multiple cases and getting coordinates right. As I mention in improvements, I believe there could be some refactoring here.
 
-#### Initial thoughts
+### Initial thoughts
 
 The `command_line_interface` class shows each instance of a subclass command (e.g. an instance of `Help` or `Init`), being passed an instance of a new `warehouse` (line 41) and then immediately running `execute`, so this suggested using this `warehouse` within `execute` when necessary.
 
-The empty, provided `init` method in Warehouse threw me initially. With `warehouse` being passed to `Init` from the command line interface, there is already an instance of Warehouse so this suggested creating a warehouse skeleton and then init adds the actual width, height and grid properties.
+The empty provided `init` method in Warehouse threw me initially. With `warehouse` being passed to `Init` from the command line interface, there is already an instance of Warehouse so this suggested creating a warehouse skeleton and then init adds the actual width, height and grid properties.
 
 ---
 
-#### Improvements
+### Improvements
 
 **Major**
 
@@ -32,7 +32,7 @@ The empty, provided `init` method in Warehouse threw me initially. With `warehou
 
 ---
 
-#### Thoughts on testing
+### Thoughts on testing
 
 - I have not written RSpec tests before. It was on my to-do list and it was great learning what I could; I don't believe learning the syntax and writing tests would take _too_ long, but it's about knowing what to test for, and that comes with practice and experience.
 
@@ -52,9 +52,7 @@ Also, this test within `init_spec`:
 `it 'is expected no new warehouse is created if the user confirms' do`
 I'm not sure this accommodates for if a user had tried to create a new warehouse with the same dimensions.
 
----
-
-As I said, I really enjoyed this and look forward to discussing my code and implementing any additional features.
+As I mentioned, I really enjoyed this challenge and look forward to discussing my code and implementing any additional features.
 
 ---
 
@@ -69,5 +67,6 @@ Below, I will document my commits (with commit message and hash) after having su
   - Accommodate for the user incorrectly typing something other than `y` or `n` when re-initialising another warehouse.
   - Add method in init to make code more readable.
 
-- refactor(warehouse): split logic into methods (d12aa7b)
+- **refactor(warehouse): split logic into methods (d12aa7b)**
+
   - Split code into more methods when checking if a crate can fit, as it was overly complicated and not very readable.
