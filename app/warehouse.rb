@@ -35,8 +35,8 @@ class Warehouse
     (positions[:start_y]..positions[:end_y]).each do |row|
       (positions[:start_x]..positions[:end_x]).each do |col|
         return false if @grid[row].nil? || @grid[col].nil? ||
-        @grid.flatten.include?(" #{crate.product_code}") ||
-        @grid[row][col] != " ."
+                        @grid.flatten.include?(" #{crate.product_code}") ||
+                        @grid[row][col] != " ."
       end
     end
     true
@@ -44,8 +44,8 @@ class Warehouse
 
   def crate_fit_within_boundaries?(crate, positions)
     return false if crate.width > @width || crate.height > @height ||
-    positions[:start_x] > @width || positions[:end_x] > @width ||
-    positions[:start_y] > @height || positions[:end_y] > @height
+                    positions[:start_x] > @width || positions[:end_x] > @width ||
+                    positions[:start_y] > @height || positions[:end_y] > @height
     true
   end
 

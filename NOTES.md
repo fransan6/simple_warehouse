@@ -54,4 +54,20 @@ I'm not sure this accommodates for if a user had tried to create a new warehouse
 
 ---
 
-As I said, I enjoyed this and look forward to discussing my code and implementing any additional features.
+As I said, I really enjoyed this and look forward to discussing my code and implementing any additional features.
+
+---
+
+### Changes post-submission
+
+Below, I will document my commits (with commit message and hash) after having submitted this code as part of a set challenge.
+
+- **refactor: add method to init (6538eb3)**
+
+  - Allow for user to input a command as Title Case, UPPERCASE or rANdoMCasE.
+  - Small edits to text that the user sees (such as including a welcome message and changes for clarity).
+  - Accommodate for the user incorrectly typing something other than `y` or `n` when re-initialising another warehouse.
+  - Add method in init to make code more readable.
+
+- refactor(warehouse): split logic into methods (d12aa7b)
+  - Split code into more methods when checking if a crate can fit, as it was overly complicated and not very readable.
