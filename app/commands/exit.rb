@@ -6,6 +6,6 @@ class Exit < Command
   HELP = 'Exits the application.'
 
   def execute(_args)
-    'Thank you for using simple_warehouse!'
+    '> Thank you for using simple_warehouse!'
   end
 end

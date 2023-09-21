@@ -10,6 +10,6 @@ describe Exit do
   describe '#execute' do
     subject { described_class.new(nil).execute([]) }
 
-    it { is_expected.to eq 'Thank you for using simple_warehouse!' }
+    it { is_expected.to eq '> Thank you for using simple_warehouse!' }
   end
 end

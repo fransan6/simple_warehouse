@@ -23,7 +23,7 @@ describe CommandLineInterface do
   end
 
   it 'can run several commands' do
-    warehouse = double('Warehouse', init: nil)
+    warehouse = double('Warehouse', init: nil, width: nil)
 
     with_mock_io do |stdin, user_input, stdout|
       unit = described_class.new(warehouse, stdin, stdout)

@@ -5,6 +5,7 @@ class Warehouse
     @width = nil
     @height = nil
     @grid = []
+    @crates = []
   end
 
   def init(width, height)
@@ -23,14 +24,21 @@ class Warehouse
 
     if crate_can_be_placed?(crate, positions)
       place_crate(crate, positions)
+      add_crate(crate)
       true
     else
       false
     end
   end
 
+  def locate_crate_coordinates(product_code)
+    crate = find_crate(product_code)
+    obtain_crate_coordinates(crate)
+  end
+
   private
 
+  # methods for crate placement, with validations
   def crate_overlaps_another_crate?(crate, positions)
     (positions[:start_y]..positions[:end_y]).each do |row|
       (positions[:start_x]..positions[:end_x]).each do |col|
@@ -60,5 +68,24 @@ class Warehouse
         @grid[row][col] = " #{crate.product_code}"
       end
     end
+  end
+
+  def add_crate(crate)
+    @crates << crate
+  end
+
+  # methods for locating a crate
+  def find_crate(product_code)
+    @crates.find { |crate| crate.product_code == product_code }
+  end
+
+  def obtain_crate_coordinates(crate)
+    locations = []
+    (crate.position_y...crate.position_y + crate.height).each do |row|
+      (crate.position_x...crate.position_x + crate.width).each do |col|
+        locations << "(#{row},#{col})"
+      end
+    end
+    '> Crate coordinates as (X,Y): ' + locations.join(' ') + '.'
   end
 end
