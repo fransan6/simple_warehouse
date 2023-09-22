@@ -32,8 +32,8 @@ class Warehouse
   end
 
   def locate_crate_coordinates(product_code)
-    crate = find_crate(product_code)
-    obtain_crate_coordinates(crate)
+    crates = find_crates(product_code)
+    obtain_crate_coordinates(crates)
   end
 
   private
@@ -43,7 +43,6 @@ class Warehouse
     (positions[:start_y]..positions[:end_y]).each do |row|
       (positions[:start_x]..positions[:end_x]).each do |col|
         return false if @grid[row].nil? || @grid[col].nil? ||
-                        @grid.flatten.include?(" #{crate.product_code}") ||
                         @grid[row][col] != " ."
       end
     end
@@ -75,17 +74,19 @@ class Warehouse
   end
 
   # methods for locating a crate
-  def find_crate(product_code)
-    @crates.find { |crate| crate.product_code == product_code }
+  def find_crates(product_code)
+    @crates.select { |crate| crate.product_code == product_code }
   end
 
-  def obtain_crate_coordinates(crate)
+  def obtain_crate_coordinates(crates)
     locations = []
-    (crate.position_y...crate.position_y + crate.height).each do |row|
-      (crate.position_x...crate.position_x + crate.width).each do |col|
-        locations << "(#{row},#{col})"
+    crates.each do |crate|
+      (crate.position_y...crate.position_y + crate.height).each do |row|
+        (crate.position_x...crate.position_x + crate.width).each do |col|
+          locations << "(#{row},#{col})"
+        end
       end
     end
-    '> Crate coordinates as (X,Y): ' + locations.join(' ') + '.'
+    "> Crate coordinates as (X,Y): #{locations.join(' ')}."
   end
 end

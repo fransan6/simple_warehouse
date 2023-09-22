@@ -43,11 +43,5 @@ describe Store do
       result = store.execute(['3', '2', '1', '1', 'R'])
       expect(result).to eq "> Crate cannot be stored."
     end
-
-    it "doesn't store a crate the product code already exits" do
-      store.execute(['1', '1', '1', '1', 'R'])
-      result = store.execute(['3', '3', '1', '1', 'R'])
-      expect(result).to eq "> Crate cannot be stored."
-    end
   end
 end

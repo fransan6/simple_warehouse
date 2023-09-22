@@ -34,5 +34,13 @@ describe Locate do
       result = locate.execute(['R'])
       expect(result.split.length - 5).to eq(6)
     end
+
+    it 'locates all positions of multiple crates with the same product code' do
+      unit.init(10,10)
+      store.execute(['1', '1', '2', '3', 'R'])
+      store.execute(['4', '4', '2', '3', 'R'])
+      result = locate.execute(['R'])
+      expect(result.split.length - 5).to eq(12)
+    end
   end
 end
